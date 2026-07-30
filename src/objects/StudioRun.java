@@ -5,12 +5,18 @@ import java.util.Scanner;
 
 public class StudioRun {
 
-    public static void inputNames() {
+    public static <T> void inputNames(Scanner scanner, ArrayList<T> arrayList) {
+        System.out.println("Введите фамилию:");
+        String surname = scanner.nextLine();
+        System.out.println("Введите имя:");
+        String name = scanner.nextLine();
+        System.out.println("Введите отчество:");
+        String patronymic = scanner.nextLine();
 
     }
 
     public static void StudioRunMenu(Scanner scanner) {
-        ArrayList<Specialist> specialists = new ArrayList<Specialist>();
+
         boolean is_working = true;
         while (is_working) {
             System.out.println("Объекты и ArrayList");
@@ -61,8 +67,12 @@ public class StudioRun {
         }
     }
 
-}
+    public static void main(String [] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Specialist> specialists = new ArrayList<Specialist>();
+        ArrayList<Client> clients = new ArrayList<Client>();
 
-//вводим данные объекта
-//создаем объект и добавляем туда информацию
-//добавляем в arraylist
+        StudioRunMenu(scanner);
+    }
+
+}
