@@ -7,7 +7,7 @@ public class StudioRun {
     private final ArrayList<Specialist> specialists = new ArrayList<Specialist>();
     private final ArrayList<Client> clients = new ArrayList<Client>();
 
-    public static void inputSpecialist(Scanner scanner, ArrayList<Specialist> arrayList) {
+    public static void addSpecialist(Scanner scanner, ArrayList<Specialist> arrayList) {
         System.out.println("Введите фамилию:");
         String surname = scanner.nextLine();
         System.out.println("Введите имя:");
@@ -19,7 +19,7 @@ public class StudioRun {
         arrayList.add(specialist);
     }
 
-    public static void inputClient(Scanner scanner, ArrayList<Client> arrayList) {
+    public static void addClient(Scanner scanner, ArrayList<Client> arrayList) {
         System.out.println("Введите фамилию:");
         String surname = scanner.nextLine();
         System.out.println("Введите имя:");
@@ -29,6 +29,21 @@ public class StudioRun {
 
         Client client = new Client(surname, name, patronymic);
         arrayList.add(client);
+    }
+
+    public static void changeSurname(Scanner scanner, Person person) {
+        String surname = scanner.nextLine();
+        person.setSurname(surname);
+    }
+
+    public static void changeName(Scanner scanner, Person person) {
+        String name = scanner.nextLine();
+        person.setName(name);
+    }
+
+    public static void changePatronymic(Scanner scanner, Person person) {
+        String patronymic = scanner.nextLine();
+        person.setPatronymic(patronymic);
     }
 
     public static void updateInfoAboutSpecialist(Scanner scanner, ArrayList<Specialist> arrayList) {
@@ -47,20 +62,16 @@ public class StudioRun {
 
             switch (point) {
                 case 1:
-                    System.out.println("Введите фамилию");
-                    inputNames(scanner, specialists);
+                    System.out.println("Введите фамилию:");
+                    changeSurname(scanner, specialists);
                     break;
                 case 2:
-                    System.out.println("Все специалисты:");
-                    outputNames(specialists);
+                    System.out.println("Введите имя:");
+                    changeName(scanner, specialists);
                     break;
                 case 3:
-                    System.out.println("Введите ФИО клиента:");
-                    inputNames(scanner, clients);
-                    break;
-                case 4:
-                    System.out.println("Все клиенты:");
-                    outputNames(clients);
+                    System.out.println("Введите отчество:");
+                    changePatronymic(scanner, clients);
                     break;
                 case 0:
                     is_working = false;
