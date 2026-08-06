@@ -46,16 +46,23 @@ public class StudioRun {
         person.setPatronymic(patronymic);
     }
 
-    public static void updateInfoAboutSpecialist(Scanner scanner, ArrayList<Specialist> arrayList) {
+    public static void updateInfoSpecialist(Scanner scanner, ArrayList<Specialist> arrayList) {
         boolean is_working = true;
         while (is_working) {
-            System.out.println("Объекты и ArrayList");
+            System.out.println("Выберите специалиста:");
+            printList(scanner, arrayList);
+            int personNumber = scanner.nextInt();
+            scanner.nextLine();
             System.out.println("Выберите действие:");
             System.out.println("1. Обновить фамилию");
             System.out.println("2. Обновить имя");
             System.out.println("3. Обновить отчество");
 
             System.out.println("0. Назад");
+            Specialist specialist = arrayList.get(personNumber);
+            if (personNumber < 0 || personNumber > arrayList.size() + 1) {
+                System.out.println("Введите существующий номер");
+            }
 
             int point = scanner.nextInt();
             scanner.nextLine();
@@ -63,15 +70,15 @@ public class StudioRun {
             switch (point) {
                 case 1:
                     System.out.println("Введите фамилию:");
-                    changeSurname(scanner, specialists);
+                    changeSurname(scanner, specialist);
                     break;
                 case 2:
                     System.out.println("Введите имя:");
-                    changeName(scanner, specialists);
+                    changeName(scanner, specialist);
                     break;
                 case 3:
                     System.out.println("Введите отчество:");
-                    changePatronymic(scanner, clients);
+                    changePatronymic(scanner, specialist);
                     break;
                 case 0:
                     is_working = false;
@@ -84,8 +91,8 @@ public class StudioRun {
 
     public static void printList(Scanner scanner, ArrayList<? extends Person> arrayList) {
         if (!arrayList.isEmpty()) {
-            for (int i = 1; i <= arrayList.size(); i++) {
-                System.out.println(i + " " + arrayList.get(i));
+            for (int i = 0; i <= arrayList.size(); i++) {
+                System.out.println(i + 1 + ". " + arrayList.get(i));
             }
         } else {
             System.out.println("Список пустой");
@@ -121,19 +128,22 @@ public class StudioRun {
             switch (point) {
                 case 1:
                     System.out.println("Введите ФИО специалиста:");
-                    inputSpecialist(scanner, specialists);
+                    addSpecialist(scanner, specialists);
                     break;
                 case 2:
+                    updateInfoSpecialist(scanner, specialists);
+                    break;
+                case 7:
                     System.out.println("Все специалисты:");
-                    outputNames(specialists);
+                    printList(scanner, specialists);
                     break;
-                case 3:
+                case 8:
                     System.out.println("Введите ФИО клиента:");
-                    inputNames(scanner, clients);
+                    addClient(scanner, clients);
                     break;
-                case 4:
+                case 14:
                     System.out.println("Все клиенты:");
-                    outputNames(clients);
+                    printList(scanner, clients);
                     break;
                 case 0:
                     is_working = false;
@@ -146,8 +156,6 @@ public class StudioRun {
 
     public static void main(String [] args) {
         Scanner scanner = new Scanner(System.in);
-
-
         StudioRunMenu(scanner);
     }
 
