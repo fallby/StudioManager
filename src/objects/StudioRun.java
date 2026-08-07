@@ -89,18 +89,17 @@ public class StudioRun {
         }
     }
 
-    public static void printList(Scanner scanner, ArrayList<? extends Person> arrayList) {
-        if (!arrayList.isEmpty()) {
-            for (int i = 0; i <= arrayList.size(); i++) {
+    public static void printSpecialistInfo(Scanner scanner, ArrayList<Specialist> arrayList) {
+        if (arrayList.isEmpty()) {
+            System.out.println("Список пустой");
+        } else {
+            for (int i = 0; i < arrayList.size(); i++) {
                 System.out.println(i + 1 + ". " + arrayList.get(i));
             }
-        } else {
-            System.out.println("Список пустой");
         }
     }
 
-    public static void StudioRunMenu(Scanner scanner, ) {
-
+    public void StudioRunMenu(Scanner scanner) {
         boolean is_working = true;
         while (is_working) {
             System.out.println("Объекты и ArrayList");
@@ -152,11 +151,6 @@ public class StudioRun {
                     System.out.println("Выберите существующий пункт меню.");
             }
         }
-    }
-
-    public static void main(String [] args) {
-        Scanner scanner = new Scanner(System.in);
-        StudioRunMenu(scanner);
     }
 
 }

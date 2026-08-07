@@ -1,4 +1,5 @@
 import arrays.StudioArray;
+import objects.StudioRun;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -7,6 +8,7 @@ public class Main {
 
     public static void main(String [] args) {
         Scanner scanner = new Scanner(System.in);
+        StudioRun studioRun = new StudioRun();
 
         boolean is_working = true;
 
@@ -14,6 +16,7 @@ public class Main {
             System.out.println("Система управления");
             System.out.println("Выберите способ управления:");
             System.out.println("1. Массив");
+            System.out.println("2. Объекты и ArrayList");
 
             System.out.println("5. Выйти");
 
@@ -22,6 +25,9 @@ public class Main {
             switch (point) {
                 case 1:
                     StudioArray.arrayMenu(scanner);
+                    break;
+                case 2:
+                    studioRun.StudioRunMenu(scanner);
                     break;
 
                 case 5:
